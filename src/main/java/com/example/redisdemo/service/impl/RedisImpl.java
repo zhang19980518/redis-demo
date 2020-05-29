@@ -40,16 +40,15 @@ public class RedisImpl {
     }
 
     public List<Student> getKeyAndValue(String key) throws Exception {
-        Object value = stringRedisTemplate.opsForValue().get(key);
+        String value = stringRedisTemplate.opsForValue().get(key);
         if (value == null) {
+            //TODO 缓存数据为空从数据库查询
             throw new Exception("data is null");
         }
             ObjectMapper objectMapper = new ObjectMapper();
-            List<Student> list=objectMapper.readValue((String) value, new TypeReference<List<Student>>(){});
+            List<Student> list=objectMapper.readValue( value, new TypeReference<List<Student>>(){});
             System.out.println(list.toString());
-            return objectMapper.readValue((String) value, new TypeReference<List<Student>>() {
+            return objectMapper.readValue( value, new TypeReference<List<Student>>() {
             });
         }
-
-
 }
