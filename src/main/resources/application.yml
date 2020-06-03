@@ -1,7 +1,7 @@
 server:
-  port: 9500
+  port: 9506
   servlet:
-    context-path: /redisserver
+    context-path: /server
 spring:
   redis:
     database: 0
@@ -18,3 +18,5 @@ spring:
         max-idle: 20
     password:
     host: 127.0.0.1
+  cache:
+    type: redis
